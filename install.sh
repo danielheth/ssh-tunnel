@@ -28,7 +28,7 @@ line="@reboot /etc/ssh-tunnel/connect $user@$host $port"
 
 
 echo "Starting tunnel now."
-/etc/ssh-tunnel/connect $user@$host $port
+sudo -H -u $user bash -c "/etc/ssh-tunnel/connect $user@$host $port"
 
 
 echo "TODO:  You may run this installer multiple times for different hosts."
