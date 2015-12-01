@@ -23,12 +23,12 @@ cp connect /etc/ssh-tunnel/
 chmod +x /etc/ssh-tunnel/connect
 
 echo "Configuring tunnel to run at startup"
-line="/etc/ssh-tunnel/connect $user@$host $port"
+line="@reboot /etc/ssh-tunnel/connect $user@$host $port"
 (crontab -u $user -l; echo "$line" ) | crontab -u $user -
 
 
 echo "Starting tunnel now."
-$line
+/etc/ssh-tunnel/connect $user@$host $port
 
 
 echo "TODO:  You may run this installer multiple times for different hosts."
