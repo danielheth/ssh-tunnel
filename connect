@@ -1,0 +1,10 @@
+#!/bin/sh
+# Thanks to http://andrewbolster.info/2013/07/ssh-persistence-redux-multiple-sites-and-crontab-laziness/
+# This script will tunnel 22 from the local host
+# to 11122 on the remote host.
+ID_FILE=$HOME/.ssh/id_rsa
+AUTOSSH_GATETIME=30
+AUTOSSH_DEBUG=yes
+AUTOSSH_PATH=/usr/bin/ssh
+export AUTOSSH_GATETIME AUTOSSH_DEBUG AUTOSSH_PATH
+autossh -2 -fN -i $ID_FILE -R '*':$2:localhost:22 $1
